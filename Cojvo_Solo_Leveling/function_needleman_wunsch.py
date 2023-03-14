@@ -65,7 +65,10 @@ def needleman_wunsch(seq1, seq2, match_score=1, mismatch_penalty=-1, gap_penalty
     # Format the output like EMBOSS Needle
     output = ""
     output += f"; Pairwise alignment of {seq1} and {seq2}\n"
-    output += f"; using the Needleman-Wunsch algorithm with match score of {match_score}, mismatch penalty of {mismatch_penalty}, and gap penalty of {gap_penalty}\n"
+    output += f"; using Needleman-Wunsch algorithm\n"
+    output += f"; Match score of {match_score}\n"
+    output += f"; Mismatch penalty of {mismatch_penalty}\n"
+    output += f"; Gap penalty of {gap_penalty}\n"
     output += f"\nLength: {length}\n"
     output += f"Identity: {identity}/{length} ({100 * identity / length:.2f}%)\n"
     output += f"Similarity: {similarity}/{length} ({100 * similarity / length:.2f}%)\n"
