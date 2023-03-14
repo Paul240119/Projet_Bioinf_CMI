@@ -74,7 +74,7 @@ def needleman_wunsch(seq1, seq2, match_score=1, mismatch_penalty=-1, gap_penalty
     output += f"Similarity: {similarity}/{length} ({100 * similarity / length:.2f}%)\n"
     output += f"Gaps: {gaps}/{length} ({100 * gaps / length:.2f}%)\n"
     output += f"Score: {score}\n\n"
-    output += f"{seq1}\n"
+    output += f"{align1}\n"
     output += "".join("|" if a == b else " " for a, b in zip(align1, align2)) + "\n"
-    output += f"{seq2}\n\n"
+    output += f"{align2}\n\n"
     print(output)
