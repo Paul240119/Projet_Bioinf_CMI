@@ -1,4 +1,4 @@
-def needleman_wunsch(seq1, seq2, match_score=1, mismatch_penalty=-1, gap_penalty=-1):
+def needleman_wunsch(seq1, seq2, iseq1="", iseq2="", match_score=1, mismatch_penalty=-1, gap_penalty=-1):
     # Initialize the matrix
     n = len(seq1)
     m = len(seq2)
@@ -64,17 +64,23 @@ def needleman_wunsch(seq1, seq2, match_score=1, mismatch_penalty=-1, gap_penalty
     
     # Format the output like EMBOSS Needle
     output = ""
-    output += f"; Pairwise alignment of {seq1} and {seq2}\n"
-    output += f"; using Needleman-Wunsch algorithm\n"
-    output += f"; Match score of {match_score}\n"
-    output += f"; Mismatch penalty of {mismatch_penalty}\n"
-    output += f"; Gap penalty of {gap_penalty}\n"
+    output += f"\nPairwise alignment of :\n"
+    output += f"Sequence 1 : {iseq1}\n"
+    output += f"Sequence 2 : {iseq2}\n"
+    output += f"Using Needleman-Wunsch algorithm\n"
+    output += f"Match score of {match_score}\n"
+    output += f"Mismatch penalty of {mismatch_penalty}\n"
+    output += f"Gap penalty of {gap_penalty}\n"
     output += f"\nLength: {length}\n"
     output += f"Identity: {identity}/{length} ({100 * identity / length:.2f}%)\n"
     output += f"Similarity: {similarity}/{length} ({100 * similarity / length:.2f}%)\n"
     output += f"Gaps: {gaps}/{length} ({100 * gaps / length:.2f}%)\n"
     output += f"Score: {score}\n\n"
-    output += f"{align1}\n"
-    output += "".join("|" if a == b else " " for a, b in zip(align1, align2)) + "\n"
-    output += f"{align2}\n\n"
+    # Loop to display the aligned sequence in chunk of 50
+    for i in range(0, len(align1), 50):
+        output += f"Sequence 1 : {align1[i:i+50]}\n"
+        output += f" "*13
+        output += f"".join("|" if a == b else " " for a, b in zip(align1[i:i+50], align2[i:i+50])) + "\n"
+        output += f"Sequence 2 : {align2[i:i+50]}\n"
+    output += f"\n"
     print(output)
