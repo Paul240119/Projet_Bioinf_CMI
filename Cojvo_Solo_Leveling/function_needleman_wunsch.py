@@ -83,4 +83,4 @@ def needleman_wunsch(seq1, seq2, iseq1="", iseq2="", match_score=1, mismatch_pen
         output += f"".join("|" if a == b else " " for a, b in zip(align1[i:i+50], align2[i:i+50])) + "\n"
         output += f"Sequence 2 : {align2[i:i+50]}\n"
     output += f"\n"
-    print(output)
+    return output
