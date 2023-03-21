@@ -206,7 +206,7 @@ def needleman_wunsch(seq1, seq2, iseq1="", iseq2="", match_score=4, mismatch_pen
     #num1_nt = 0
     #for the seq2 (align2)
     #num2_nt = 0
-      #N.B. This numbers are supposed, at the end, to be equal to the lenghth of seq1 and seq2 respectively,
+      #N.B. These numbers are supposed, at the end, to be equal to the lenghth of seq1 and seq2 respectively,
         #that we counted in the first lines of the code
         #But we calculate them again here
         #because the code will be separated in different independent functions !
