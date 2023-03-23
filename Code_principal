@@ -7,7 +7,14 @@
 
 #define function import to get the file of the user
 
-def import()
+def import():
+    fasta = open(input('File: '), r)
+    return(fasta)
+
+
+
+
+
 
 sequences = []
 print('Choisir fichier .fasta de la sequence 1')
