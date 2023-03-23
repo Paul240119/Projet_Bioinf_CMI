@@ -35,7 +35,7 @@ def needleman_wunsch(seq1, seq2, iseq1="", iseq2="", match_score=4, mismatch_pen
             #Score if diagonal way == identity (match) or substitution (mismatch)
               #previous code : diagonal_score = matrix[i-1][j-1] + (match_score if seq1[i-1] == seq2[j-1] else mismatch_penalty)
               #here I would rather put seq1[i] than seq1[i-1] and seq2[j] rather than seq2[j-1], as corrected below
-            diagonal_score = matrix[i-1][j-1] + (match_score if seq1[i] == seq2[j] else mismatch_penalty)
+            diagonal_score = matrix[i-1][j-1] + (match_score if seq1[i-1] == seq2[j-1] else mismatch_penalty)
             
             #Score if horiztontal way == indel (gap)
               #with deletion//gap in the seq1, so we move by column but the line remains the same
@@ -54,11 +54,11 @@ def needleman_wunsch(seq1, seq2, iseq1="", iseq2="", match_score=4, mismatch_pen
     
     # Alignment : Trace back through the costs matrix to find it #
     #############################################################
-   '''This part of the code is responsible for tracing back through the matrix
-   to find the optimal alignment between the two input sequences.
-   The algorithm starts at the bottom right corner of the matrix
-   (corresponding to the end of both sequences) and works its way
-   towards the top left corner (corresponding to the beginning of both sequences).'''
+   #'''This part of the code is responsible for tracing back through the matrix
+   #to find the optimal alignment between the two input sequences.
+   #The algorithm starts at the bottom right corner of the matrix
+   #(corresponding to the end of both sequences) and works its way
+   #towards the top left corner (corresponding to the beginning of both sequences).'''
    
     ## Initialisation of the new sequences, for the alignment
     #as empty strings
@@ -75,7 +75,7 @@ def needleman_wunsch(seq1, seq2, iseq1="", iseq2="", match_score=4, mismatch_pen
         #Score if diagonal way == identity (match) or substitution (mismatch)
           #previous code : matrix[i-1][j-1] + (match_score if seq1[i-1] == seq2[j-1] else mismatch_penalty)
           #here I would rather put seq1[i] than seq1[i-1] and seq2[j] rather than seq2[j-1], as corrected below
-        if matrix[i][j] == matrix[i-1][j-1] + (match_score if seq1[i] == seq2[j] else mismatch_penalty):
+        if matrix[i][j] == matrix[i-1][j-1] + (match_score if seq1[i-1] == seq2[j-1] else mismatch_penalty):
             #adding the element of each sequence in its alignement version
               #thanks to the order of the concatenation : seq[] + align and not the reverse (align + seq[]),
               #each iteration will fill the alignment version of the sequence
@@ -202,9 +202,9 @@ def needleman_wunsch(seq1, seq2, iseq1="", iseq2="", match_score=4, mismatch_pen
     output += f"Score: {score}\n\n"
     
     ## Initialsation of the nucleotides counters
-    for the seq1 (align1)
+    #for the seq1 (align1)
     num1_nt = 0
-    for the seq2 (align2)
+    #for the seq2 (align2)
     num2_nt = 0
     
     ## Printing of the aligned sequences
@@ -217,7 +217,7 @@ def needleman_wunsch(seq1, seq2, iseq1="", iseq2="", match_score=4, mismatch_pen
         #to count the number of nt, we have to substact the gaps...
           # - which we count thanks to ".count()" -
           #...from the total number of characters
-        num_nt1 = num_nt1 + align1[i:i+50] - align1[i:i+50].count("-")
+        num1_nt = num1_nt + align1[i:i+50] - align1[i:i+50].count("-")
         
         #total number of nt, for seq1
         output += f"{num1_nt}\n"
@@ -240,3 +240,8 @@ def needleman_wunsch(seq1, seq2, iseq1="", iseq2="", match_score=4, mismatch_pen
         output += f"{num2_nt}\n"        
     output += f"\n"
     return output
+
+seq1 = "ATTCAAGCTGA"
+seq2 = "AACTTGCGTGA"
+fin = needleman_wunsch(seq1, seq2, iseq1="", iseq2="", match_score=4, mismatch_penalty=-1, gap_penalty=-2)
+print(fin)
