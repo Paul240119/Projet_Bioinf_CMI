@@ -68,3 +68,45 @@ ANNEXE: extrait de la sortie produite par le logiciel NEEDLE de la suite logicie
 
 ### Auteur
 ### Licences
+
+## II - Notre plan de programmation
+
+### MODULE (Fichier fonctions)
+
+#### Fonction 1
+Calcul matrice coûts
++ Affichage dans la console #optionnel (booléen "debug"= FALSE par défaut)
+
+#### Fonction 2
+Calcul alignement
++ Affichage dans la console
++ Sortie ouptut dans Fichier sortie #optionnel (booléen "expert" = FALSE par défaut)
+
+
+### Programme principal (fichier ouvert par l'utilisateur)
+
+1- Ouverture fichiers fasta
+    -> seq1
+    -> seq2
+
+2- Comptage des nucléotides
+    => pour vérifier que la taille de la séquence ne dépasse pas 20 nt
+
+3- Question à l'utilisateur pour qu'il choisisse entre les 3 modes (débuggage =1, courant=2, expert=3) :
+    -> si 1) :
+    appel fonction 1 avec debug=TRUE
+    mat.cost<-(x) #avec x = le return de la fonction 1
+    appel fonction 2
+
+    -> si 2) :
+    appel fonction 1 avec debug=FALSE
+    mat.cost<-(x) #avec x = le return de la fonction 1
+    appel fonction 2
+
+    -> si 3) :
+    appel fonction 1 avec debug=FALSE
+    mat.cost<-(x) #avec x = le return de la fonction 1
+    appel fonction 2 avec expert=TRUE
+
+
+
