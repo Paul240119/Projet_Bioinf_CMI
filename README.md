@@ -66,22 +66,31 @@ INS2_MOUSE 101 SLYQLENYCN 110
 ```
 ANNEXE: extrait de la sortie produite par le logiciel NEEDLE de la suite logicielle EMBOSS.
 
-### Auteur
-### Licences
-
 ## II - Notre plan de programmation
+
+### About our code
+
+#### Auteurs
+Anais Bosc-Bierne, Blandine Hottekiet-Genetier, Enora Cieslak, Helena Drude, Mathis Bourgoin, Paul Lemonier
+
+Emails: aboscbierne@etud.univ-angers.fr , bhott@etud.univ-angers.fr , enciesl@etud.univ-angers.fr ,helena.drude@etud.univ-angers.fr , mbourgoin@etud.univ-angers.fr , paul.lemonnier@etud.univ-angers.fr
+
+#### Licences
 
 ### MODULE (Fichier fonctions)
 
 #### Fonction 1
+```
 Calcul matrice coûts
 + Affichage dans la console #optionnel (booléen "debug"= FALSE par défaut)
+```
 
 #### Fonction 2
+```
 Calcul alignement
 + Affichage dans la console
 + Sortie ouptut dans Fichier sortie #optionnel (booléen "expert" = FALSE par défaut)
-
+```
 
 ### Programme principal (fichier ouvert par l'utilisateur)
 
@@ -93,11 +102,12 @@ Calcul alignement
     => pour vérifier que la taille de la séquence ne dépasse pas 20 nt
 
 3- Question à l'utilisateur pour qu'il choisisse entre les 3 modes (débuggage =1, courant=2, expert=3) :
+    ```
     -> si 1) :
     appel fonction 1 avec debug=TRUE
     mat.cost<-(x) #avec x = le return de la fonction 1
     appel fonction 2
-
+    
     -> si 2) :
     appel fonction 1 avec debug=FALSE
     mat.cost<-(x) #avec x = le return de la fonction 1
@@ -107,6 +117,8 @@ Calcul alignement
     appel fonction 1 avec debug=FALSE
     mat.cost<-(x) #avec x = le return de la fonction 1
     appel fonction 2 avec expert=TRUE
+    ```
+    
 
 
 
