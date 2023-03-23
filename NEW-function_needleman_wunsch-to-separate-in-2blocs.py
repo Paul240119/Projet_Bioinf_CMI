@@ -1,3 +1,35 @@
+## ---------------------------
+##
+## Script name: projet
+##
+## Purpose of script: Projet CMI Programmation_Landes
+##
+## Version: 1.0
+##
+## Author: Anais Bosc-Bierne, Blandine Hottekiet-Genetier, Enora Cieslak, Helena Drude, Mathis Bourgoin, Paul Lemonier
+## Email: aboscbierne@etud.univ-angers.fr , bhott@etud.univ-angers.fr , enciesl@etud.univ-angers.fr ,
+## helena.drude@etud.univ-angers.fr , mbourgoin@etud.univ-angers.fr , paul.lemonnier@etud.univ-angers.fr
+##
+## ---------------------------
+
+#=======================================
+#
+# Aligned_sequences: 2
+# 1: INS1_MOUSE
+# 2: INS2_MOUSE
+# Matrix: EBLOSUM62
+# Gap_penalty: 10.0
+# Extend_penalty: 0.5
+#
+# Length: 110
+# Identity: 97/110 (88.2%)
+# Similarity: 99/110 (90.0%)
+# Gaps: 2/110 ( 1.8%)
+# Score: 501.5
+#
+#
+#=======================================
+
 def needleman_wunsch(seq1, seq2, iseq1="", iseq2="", match_score=4, mismatch_penalty=-1, gap_penalty=-2):
     ### 1) FOR THE FUNCTION "CALCULATION OF THE COSTS MATRIX"  ##
     
@@ -217,7 +249,7 @@ def needleman_wunsch(seq1, seq2, iseq1="", iseq2="", match_score=4, mismatch_pen
         #to count the number of nt, we have to substact the gaps...
           # - which we count thanks to ".count()" -
           #...from the total number of characters
-        num1_nt = num1_nt + align1[i:i+50] - align1[i:i+50].count("-")
+        num1_nt = num1_nt + len(align1[i:i+50]) - align1[i:i+50].count("-")
         
         #total number of nt, for seq1
         output += f"{num1_nt}\n"
@@ -234,7 +266,7 @@ def needleman_wunsch(seq1, seq2, iseq1="", iseq2="", match_score=4, mismatch_pen
         #printing the alignment version of seq2 (=align2)
         output += f"Sequence 2 : {num2_nt}\t{align2[i:i+50]}\t"
         
-        num2_nt = num2_nt + align2[i:i+50] - align2[i:i+50].count("-")
+        num2_nt = num2_nt + len(align2[i:i+50]) - align2[i:i+50].count("-")
         
         #total number of nt, for seq2
         output += f"{num2_nt}\n"        
