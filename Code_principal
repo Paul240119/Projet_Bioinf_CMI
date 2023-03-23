@@ -1,13 +1,13 @@
-# 
+# -------------------------------------------------
 # CMI Master 1 Biologie Végétale
 # Université d'Angers
 #
 # Licence MIT
-# 
-# 
+#--------------------------------------------------
+
 #define function import to get the file of the user
 
-def
+def import()
 
 sequences = []
 print('Choisir fichier .fasta de la sequence 1')
