@@ -81,13 +81,13 @@ def needleman_wunsch(seq1, seq2, iseq1="", iseq2="", match_score=1, mismatch_pen
     num_gaps2 = 0
     for i in range(0, len(align1), 50):
         output += f"Sequence 1 : {num_gaps1}\t{align1[i:i+50]}\t"
-        num_gaps1 = num_gaps1 + 50 - align1[i:i+50].count("-")
+        num_gaps1 = num_gaps1 + align1[i:i+50] - align1[i:i+50].count("-")
         output += f"{num_gaps1}\n"
         output += f" "*13
         output += f"\t"
         output += f"".join("|" if a == b else " " for a, b in zip(align1[i:i+50], align2[i:i+50])) + "\n"
         output += f"Sequence 2 : {num_gaps2}\t{align2[i:i+50]}\t"
-        num_gaps2 = num_gaps2 + 50 - align2[i:i+50].count("-")
+        num_gaps2 = num_gaps2 + align2[i:i+50] - align2[i:i+50].count("-")
         output += f"{num_gaps2}\n"        
     output += f"\n"
     return output
