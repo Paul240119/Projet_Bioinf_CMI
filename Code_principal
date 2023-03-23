@@ -1,3 +1,33 @@
-# CMI Master 1 Biologie Végétale
 # 
+# CMI Master 1 Biologie Végétale
+# Université d'Angers
+#
 # Licence MIT
+# 
+# 
+#define function import to get the file of the user
+
+def
+
+sequences = []
+print('Choisir fichier .fasta de la sequence 1')
+with open(input(), 'r') as input_file:
+    seq1 = ''
+    for line in input_file:
+        if line.startswith('>'):
+            sequences.append(seq1)
+            seq1 = ''
+        else:
+            seq1 += line.strip()
+print(seq1)
+
+sequences = []
+with open(input(), 'r') as input_file:
+    seq2 = ''
+    for line in input_file:
+        if line.startswith('>'):
+            sequences.append(seq2)
+            seq2 = ''
+        else:
+            seq2 += line.strip()
+print(seq2)
