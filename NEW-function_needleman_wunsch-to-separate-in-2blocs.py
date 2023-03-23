@@ -202,20 +202,10 @@ def needleman_wunsch(seq1, seq2, iseq1="", iseq2="", match_score=4, mismatch_pen
     output += f"Score: {score}\n\n"
     
     ## Initialsation of the nucleotides counters
-    #for the seq1 (align1)
-    #num1_nt = 0
-    #for the seq2 (align2)
-    #num2_nt = 0
-      #N.B. These numbers are supposed, at the end, to be equal to the lenghth of seq1 and seq2 respectively,
-        #that we counted in the first lines of the code
-        #But we calculate them again here
-        #because the code will be separated in different independent functions !
-          # (so these variables, len(seq1) and len(seq2) will be local variables
-        #But WHY count the nt like this, and not juste do again "len()" ??
-    #Below and just above, the modifications that I propose regarding to this matter
-    ## Calculating the lengths of the two sequences
-    num1_nt = len(seq1)
-    mum2_nt = len(seq2)
+    for the seq1 (align1)
+    num1_nt = 0
+    for the seq2 (align2)
+    num2_nt = 0
     
     ## Printing of the aligned sequences
     #with no more than 50 characters* by row, so i is going from 50 to 50
@@ -224,18 +214,18 @@ def needleman_wunsch(seq1, seq2, iseq1="", iseq2="", match_score=4, mismatch_pen
         #{num_nt1} is for printing the variable which counts the number of nt
         output += f"Sequence 1 : {num1_nt}\t{align1[i:i+50]}\t"
         
-        #(#to count the number of nt, we have to substact the gaps...
+        #to count the number of nt, we have to substact the gaps...
           # - which we count thanks to ".count()" -
           #...from the total number of characters
-        #num_nt1 = num_nt1 + 50 - align1[i:i+50].count("-")
+        num_nt1 = num_nt1 + align1[i:i+50] - align1[i:i+50].count("-")
         
         #total number of nt, for seq1
         output += f"{num1_nt}\n"
         
-        #making a space line to separate the two sequences
+        #to put spaces below "Sequence 1 :" to allow the alignment between the sequences and the "|" line
         output += f" "*13
         
-        #why not "\n" rather than "\t" below ?
+        #tabulation to allow the alignment between the sequences
         output += f"\t"
         
         #printing | to indicate the identities
@@ -244,7 +234,7 @@ def needleman_wunsch(seq1, seq2, iseq1="", iseq2="", match_score=4, mismatch_pen
         #printing the alignment version of seq2 (=align2)
         output += f"Sequence 2 : {num2_nt}\t{align2[i:i+50]}\t"
         
-        #num2_nt = num2_nt + 50 - align2[i:i+50].count("-")
+        num2_nt = num2_nt + align2[i:i+50] - align2[i:i+50].count("-")
         
         #total number of nt, for seq2
         output += f"{num2_nt}\n"        
