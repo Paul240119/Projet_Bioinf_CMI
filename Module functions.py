@@ -1,12 +1,4 @@
 def matrix_cost(seq1, seq2, match_score=4, mismatch_penalty=-1, gap_penalty=-2, debug=False):
-    # PARAMETERS OF MATRIX_COST #
-        #seq1:sequence FASTA n°1
-        #seq2:sequence FASTA n°2
-
-        #match_score,mismatch_penalty,gap_penalty : parameters of the costs
-
-        #debug : boolean to choose to print the matrix of costs or not (at the end) ;
-            #default value (False)=does not print it
     
     # Initialisation of the similarities matrix == costs matrix #
     #############################################################
@@ -97,13 +89,3 @@ seq1="ATTCAAGCTGA"
 seq2="AACTTGCGTGA"
 
 matrix_cost(seq1, seq2, match_score=4, mismatch_penalty=-1, gap_penalty=-2,debug=True)
-
-
-
-
-
-
-
-
-    
-
