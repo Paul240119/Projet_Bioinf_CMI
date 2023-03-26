@@ -4,28 +4,7 @@
 #
 # Licence MIT
 #--------------------------------------------------
-
-#define function import to get the file of the user
-
-def import_():
-    print('Entrez le fichier .fasta à comparer: ')
-    fasta = open(input(), 'r')
-    return(fasta)
-
-def verif(fichier):
-    for line in fichier:
-        if line.startswith('>') : 
-            iseq = line.partition('\n')[0]
-            seq = ''
-        elif :
-            for i in fichier:
-                if i == 'A' or 'T' or 'C' or 'G':
-                    seq = ''
-                else:
-                    print('Il y a une erreur dans votre fichier')
-                    
 ######################################################################
-### code modifié
 # import tkinter as tk
 #from tkinter import filedialog#
 ##
