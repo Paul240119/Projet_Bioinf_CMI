@@ -108,7 +108,7 @@ def matrix_cost(seq1, seq2, match_score=4, mismatch_penalty=-1, gap_penalty=-2, 
             print("\n",end="")
             print("-"*width)
 
-def needleman_wunsch(seq1, seq2, iseq1="", iseq2="", match_score=4, mismatch_penalty=-1, gap_penalty=-2):
+def alignement (matrix, seq1, seq2, expert = "",  iseq1="", iseq2="", match_score=4, mismatch_penalty=-1, gap_penalty=-2):
     
     # Alignment : Trace back through the costs matrix to find it #
     #############################################################
@@ -120,6 +120,8 @@ def needleman_wunsch(seq1, seq2, iseq1="", iseq2="", match_score=4, mismatch_pen
    
     ## Initialisation of the new sequences, for the alignment
     #as empty strings
+    n = len(seq1)
+    m = len(seq2)
     align1 = ""
     align2 = ""
     #Starting i and j to the ends of their sequences, to begin the traceback
@@ -297,7 +299,12 @@ def needleman_wunsch(seq1, seq2, iseq1="", iseq2="", match_score=4, mismatch_pen
         #total number of nt, for seq2
         output += f"{num2_nt}\n"        
     output += f"\n"
-    print(output) #ajout pour test
+    if expert == "affichage":
+          print(output) #ajout pour test
+    if expert == "fichier":
+       with open("Alignement.txt", "w") as filout:
+           filout.write(output)
+   
     return output
     
 
@@ -305,7 +312,7 @@ def needleman_wunsch(seq1, seq2, iseq1="", iseq2="", match_score=4, mismatch_pen
 seq1="ATTCAAGCTGA"
 seq2="AACTTGCGTGA"
 matrix_cost(seq1, seq2, match_score=4, mismatch_penalty=-1, gap_penalty=-2,debug=True)
-needleman_wunsch(seq1, seq2, iseq1="", iseq2="", match_score=4, mismatch_penalty=-1, gap_penalty=-2)
+alignement(matrix, seq1, seq2, expert = "",  iseq1="", iseq2="", match_score=4, mismatch_penalty=-1, gap_penalty=-2)
 
 
 
