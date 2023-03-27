@@ -301,9 +301,11 @@ def alignement (matrix, seq1, seq2, expert = "",  iseq1="", iseq2="", match_scor
     output += f"\n"
     if expert == "affichage":
           print(output) #ajout pour test
-    if expert == "fichier":
+    elif expert == "fichier":
        with open("Alignement.txt", "w") as filout:
            filout.write(output)
+    else:
+        print("saississez affichage ou fichier dans la variable expert")
    
     return output
     
