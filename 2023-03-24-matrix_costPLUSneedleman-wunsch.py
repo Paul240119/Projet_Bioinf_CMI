@@ -108,7 +108,7 @@ def matrix_cost(seq1, seq2, match_score=4, mismatch_penalty=-1, gap_penalty=-2, 
             print("\n",end="")
             print("-"*width)
 
-def alignement (matrix, seq1, seq2, expert =False,  iseq1="", iseq2="", match_score=4, mismatch_penalty=-1, gap_penalty=-2):
+def alignment (matrix, seq1, seq2, expert =False,  iseq1="", iseq2="", match_score=4, mismatch_penalty=-1, gap_penalty=-2):
     
     # Alignment : Trace back through the costs matrix to find it #
     #############################################################
