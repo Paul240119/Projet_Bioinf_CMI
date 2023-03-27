@@ -5,5 +5,7 @@
 # Licence MIT
 #--------------------------------------------------
 
-from ModuleFunction.py import*
+from Module_Functions import*
+
 Needleman()
+
