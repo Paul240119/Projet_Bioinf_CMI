@@ -1,3 +1,6 @@
+import tkinter as tk
+from tkinter import filedialog
+
 def matrix_cost(seq1, seq2, match_score=4, mismatch_penalty=-1, gap_penalty=-2, debug=False):
     # PARAMETERS OF MATRIX_COST #
         #seq1:sequence FASTA n°1
@@ -228,8 +231,8 @@ def alignment (matrix, seq1, seq2, expert =False,  iseq1="", iseq2="", match_sco
         else:
             score += mismatch_penalty
     
-    ### 4) FOR THE FUNCTION "FINAL PRINTING" ##############
-    ### THE ALIGNMENT NEEDS TO END IN AN EXTERNAL FILE* ###
+    ### FOR THE "FINAL PRINTING" ##############
+    ### THE ALIGNMENT CAN END IN AN EXTERNAL FILE* ###
     ### *IN ADDITION OF THE OUTPUT PRINTED IN THE CONSOLE #
     # Output : formatting like EMBOSS Needle ##############
     #######################################################
@@ -306,8 +309,6 @@ def alignment (matrix, seq1, seq2, expert =False,  iseq1="", iseq2="", match_sco
        with open("Alignement.txt", "w") as filout:
            filout.write(output) #Creating a file with the alignement 
     
-import tkinter as tk
-from tkinter import filedialog#
 def choose_file():
     # create a Tkinter root window, but hide it
     root = tk.Tk()
@@ -367,14 +368,6 @@ def verif_seq(seq):
         print("Enter a valid DNA sequence")
 
     return debug
-
-    
-
-## Test appel fonction ci-dessous
-seq1="ATTCAAGCTGA"
-seq2="AACTTGCGTGA"
-matrix_cost(seq1, seq2, match_score=4, mismatch_penalty=-1, gap_penalty=-2,debug=True)
-alignement(matrix, seq1, seq2, expert = "",  iseq1="", iseq2="", match_score=4, mismatch_penalty=-1, gap_penalty=-2)
 
 
 
