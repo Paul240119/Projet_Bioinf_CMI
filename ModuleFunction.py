@@ -19,7 +19,7 @@ def matrix_cost(seq1, seq2, match_score=4, mismatch_penalty=-1, gap_penalty=-2, 
     #...so we create them as global
     global n
     global m
-    global matrix
+    #global matrix
     
     ## Calculating the lengths of the two sequences
     n = len(seq1)
@@ -65,6 +65,8 @@ def matrix_cost(seq1, seq2, match_score=4, mismatch_penalty=-1, gap_penalty=-2, 
             
             ## Registration of the highest score (sum of costs) in the cell of the costs matrix 
             matrix[i][j] = max(diagonal_score, left_score, up_score)
+            
+    return matrix
 
     # Optionnal* printing of the costs matrix #
     ##########################################
@@ -111,7 +113,7 @@ def matrix_cost(seq1, seq2, match_score=4, mismatch_penalty=-1, gap_penalty=-2, 
             print("\n",end="")
             print("-"*width)
 
-def alignment (matrix, seq1, seq2, expert =False,  iseq1="", iseq2="", match_score=4, mismatch_penalty=-1, gap_penalty=-2):
+def alignment(matrix, seq1, seq2, expert =False,  iseq1="", iseq2="", match_score=4, mismatch_penalty=-1, gap_penalty=-2):
     
     # Alignment : Trace back through the costs matrix to find it #
     #############################################################
@@ -346,7 +348,6 @@ def separate_seq():
 
     # return the iseq and seq variables
     return iseq, seq
-    
  
 def verif_seq(seq):
     allowed_chars = set(['A', 'T', 'C', 'G'])
@@ -358,17 +359,69 @@ def verif_seq(seq):
 
         # check if seq length is less than or equal to 20
         if seq_length <= 20:
-            debug = True
             print("Length of seq is less than or equal to 20")
+            propose_debug = True
+            
         else:
-            debug = False
             print("Length of seq is greater than 20")
+            propose_debug = False
     else:
-        debug = False
-        print("Enter a valid DNA sequence")
+        propose_debug = False
+        print("Give a valid DNA sequence")
 
-    return debug
+    return propose_debug
 
+def mode_choice():
+    
+    #PREPARING THE WINDOW FOR INTERACTIVE QUESTION TO THE USER
+    root = tk.Tk()
+    root.withdraw()
 
+    # create a new window
+    mode_choice_window = tk.Toplevel(root)
 
+    #set the window title
+    mode_choice_window.title("Mode Choice")
+
+    # set the question for the prompt
+    prompt_label = tk.Label(mode_choice_window, text="Select a mode:")
+    prompt_label.pack()
+
+    #variable to store the mode which will be selected
+    mode_var = tk.StringVar(mode_choice_window)
+
+    #PREPARING THE RESULT OF THE FUNCTION
+    #which is the mode choice of the user
+    #previous code : de select_mode(choice)
+    def select_mode():
+        mode_var.set() #define choice depending on the button pressed (which is =mode_var)
+        mode_choice_window.destroy()
+    
+    #PREPARING THE BUTTONS which may be displayed after
+    debug_button = tk.Button(mode_choice_window, text="Debug Mode", 
+                             command=lambda: select_mode('debug'))
+    normal_button = tk.Button(mode_choice_window, text="Normal Mode",
+                             command=lambda: select_mode('normal'))
+    expert_button = tk.Button(mode_choice_window, text="Expert Mode",
+                             command=lambda: select_mode('expert'))
+    
+    #CREATING THE BUTTONS
+    #if the sequences are not too long (propose_debug=True for both)
+    if verif1 and verif2:
+        #displaying the buttons for debug mode, normal mode, and expert mode
+        debug_button.pack()
+        normal_button.pack()
+        expert_button.pack()
+    
+    #if one of the sequence is too long
+    else:
+        #not displaying the button for debug mode
+        normal_button.pack()
+        expert_button.pack()
+    
+    #DISPLAYING THE WINDOW, WITH THE 2 OR 3 BUTTONS
+    mode_choice_window.wait_window(mode_choice_window)  # wait for user to make selection
+    
+    #RETURNING the choice of the user ('debug', 'normal' or 'expert')
+    return mode_var.get()
 
