@@ -22,7 +22,9 @@ def choose_file():
 
     # return the text content of the file
     return file
-define function verif to parse the input file
+    
+    
+# define function verif to parse the input file
 def separate_seq():
     # call choose_file_and_read_text() to get the text content of the selected file
     file = choose_file()
@@ -43,6 +45,8 @@ def separate_seq():
 
     # return the iseq and seq variables
     return iseq, seq
+    
+ 
 def verif_seq(seq):
     allowed_chars = set(['A', 'T', 'C', 'G'])
     seq_length = len(seq)
