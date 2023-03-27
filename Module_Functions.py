@@ -78,7 +78,8 @@ def open_seq2():
         print("seq2:",seq2)
 
 def verif_seq(seq):
-    allowed_chars = set(["A", "T", "C", "G","\n"])
+    #if we use open_seq(), we have to add "\n" to the allowed_chars!!
+    allowed_chars = set(["A", "T", "C", "G"])
     seq_length = len(seq)
 
     # check if all characters in seq are in allowed_chars set
