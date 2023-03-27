@@ -131,7 +131,7 @@ def alignment (matrix, seq1, seq2, expert =False,  iseq1="", iseq2="", match_sco
     i = n
     j = m
     
-    #this will wok until none of the sequence is finished
+    #this will work until none of the sequence is finished
     while i > 0 and j > 0:
         ## Comparison of the 3 possible scores to find the good way of alignment
             
@@ -169,7 +169,7 @@ def alignment (matrix, seq1, seq2, expert =False,  iseq1="", iseq2="", match_sco
             #...so we move (backward) in the line but the column remains the same
             i -= 1
             
-    #this will wok if seq1 is finished (i=0) but seq2 is not (j>0)
+    #this will work if seq1 is finished (i=0) but seq2 is not (j>0)
       #until seq2 is also finished
     while j > 0:
         #filling of seq1 with gaps
@@ -177,7 +177,7 @@ def alignment (matrix, seq1, seq2, expert =False,  iseq1="", iseq2="", match_sco
         align2 = seq2[j-1] + align2
         j -= 1
 
-    #this will wok if seq2 is finished (j=0) but seq1 is not (i>0)
+    #this will work if seq2 is finished (j=0) but seq1 is not (i>0)
       #until seq1 is also finished
     while i > 0:
         align1 = seq1[i-1] + align1
