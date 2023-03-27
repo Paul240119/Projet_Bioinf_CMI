@@ -5,47 +5,6 @@
 # Licence MIT
 #--------------------------------------------------
 
-
-def mode_choice(debug=False):
-    root = tk.Tk()
-    root.withdraw()
-
-    # create a new window for mode choice
-    mode_choice_window = tk.Toplevel(root)
-
-    # set the window title
-    mode_choice_window.title("Mode Choice")
-
-    # create a label for the prompt
-    prompt_label = tk.Label(mode_choice_window, text="Select a mode:")
-    prompt_label.pack()
-
-    mode_var = tk.StringVar(mode_choice_window)  # variable to store selected mode
-
-    def select_mode(mode):
-        mode_var.set(mode)
-        mode_choice_window.destroy()
-
-    debug_button = tk.Button(mode_choice_window, text="Debug Mode", 
-                             command=lambda: select_mode('debug'))
-    normal_button = tk.Button(mode_choice_window, text="Normal Mode",
-                             command=lambda: select_mode('normal'))
-    expert_button = tk.Button(mode_choice_window, text="Expert Mode",
-                             command=lambda: select_mode('expert'))
-    if debug:
-        # create three buttons for debug mode, normal mode, and expert mode
-        debug_button.pack()
-        normal_button.pack()
-        expert_button.pack()
-
-    else:
-        normal_button.pack()
-        expert_button.pack()
-    
-    mode_choice_window.wait_window(mode_choice_window)  # wait for user to make selection
-    return mode_var.get()
-
-
 ## Test appel fonction ci-dessous
 seq1="ATTCAAGCTGA"
 seq2="AACTTGCGTGA"
