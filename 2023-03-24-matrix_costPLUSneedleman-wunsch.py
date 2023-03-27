@@ -301,10 +301,10 @@ def alignement (matrix, seq1, seq2, expert =False,  iseq1="", iseq2="", match_sc
     output += f"\n"
     
     if expert == False:
-          print(output) #
+          print(output) #Printing the results in the console
     else:
        with open("Alignement.txt", "w") as filout:
-           filout.write(output) #
+           filout.write(output) #Creating a file with the alignement 
     
 import tkinter as tk
 from tkinter import filedialog#
