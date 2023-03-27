@@ -36,7 +36,8 @@ def open_seq1():
     if first_line.startswith('>'):
         print("Information : The first line starts with '>'")
         iseq1 = first_line
-        seq1 = '\n'.join(lines[1:])
+        #seq1=lines[1:].split()[0]
+        seq1 = "\n".join(lines[1:])
         print("iseq1:",iseq1)
         print("seq1:",seq1)
     else:
@@ -65,7 +66,8 @@ def open_seq2():
     if first_line.startswith('>'):
         print("Information : The first line starts with '>'")
         iseq2 = first_line
-        seq2 = '\n'.join(lines[1:])
+        #seq2=lines[1:].split()[0]
+        seq2 = "\n".join(lines[1:])
         print("iseq2:",iseq2)
         print("seq2:",seq2)
     else:
@@ -120,9 +122,8 @@ def mode_choice():
 
     #PREPARING THE RESULT OF THE FUNCTION
     #which is the mode choice of the user
-    #previous code : de select_mode(choice)
-    def select_mode():
-        mode_var.set() #define choice depending on the button pressed (which is =mode_var)
+    def select_mode(choice):
+        mode_var.set(choice) #define choice depending on the button pressed (which is =mode_var)
         mode_choice_window.destroy()
     
     #PREPARING THE BUTTONS which may be displayed after
@@ -169,9 +170,7 @@ def matrix_cost(seq1, seq2, match_score=4, mismatch_penalty=-1, gap_penalty=-2, 
     ## Initialisation of the variables...
     #...which will be used by other functions (function 2)...
     #...so we create them as global
-    global n
-    global m
-    #global matrix
+    global matrix
     
     ## Calculating the lengths of the two sequences
     n = len(seq1)
@@ -263,9 +262,7 @@ def matrix_cost(seq1, seq2, match_score=4, mismatch_penalty=-1, gap_penalty=-2, 
             print("\n",end="")
             print("-"*width)
 
-    return matrix
-
-def alignment(matrix, seq1, seq2, expert =False,  iseq1="", iseq2="", match_score=4, mismatch_penalty=-1, gap_penalty=-2):
+def alignment(matrix, seq1, seq2, iseq1="", iseq2="", expert =False, match_score=4, mismatch_penalty=-1, gap_penalty=-2):
     
     # Alignment : Trace back through the costs matrix to find it #
     #############################################################
@@ -279,6 +276,7 @@ def alignment(matrix, seq1, seq2, expert =False,  iseq1="", iseq2="", match_scor
     #as empty strings
     n = len(seq1)
     m = len(seq2)
+    
     align1 = ""
     align2 = ""
     #Starting i and j to the ends of their sequences, to begin the traceback
@@ -394,9 +392,7 @@ def alignment(matrix, seq1, seq2, expert =False,  iseq1="", iseq2="", match_scor
     output = ""
     output += f"\nPairwise alignment of :\n"
     
-    ## Recovering the variables defining the sequences ; ex: "iseq1" : what is it ??
-      #this variable does not seem to be defined in this code
-      #would this be the information on the first line of the fasta file of the sequence ?
+    ## Recovering the variables defining the sequences
     output += f"Sequence 1 : {iseq1}\n"
     output += f"Sequence 2 : {iseq2}\n"
     
@@ -467,8 +463,10 @@ def alignment(matrix, seq1, seq2, expert =False,  iseq1="", iseq2="", match_scor
 def Needleman() :
     
     #Import the sequences
-    open_seq1()
-    open_seq2()
+    seq1="ATTCAAGCTGA"
+    seq2="AACTTGCGTGA"
+    #open_seq1()
+    #open_seq2()
     
     #verification of the sequences
     global verif1 #to use it in other functions (mode_choice)
@@ -483,18 +481,21 @@ def Needleman() :
         #will return matrix and print it in the console
         matrix_cost(seq1, seq2, match_score=4, mismatch_penalty=-1, gap_penalty=-2, debug=True)
         #will make the alignment and print it in the console too
-        alignment(matrix, seq1, seq2, expert =False,  iseq1="", iseq2="", match_score=4, mismatch_penalty=-1, gap_penalty=-2)
-    
+        #if iseq : alignment(matrix, seq1, seq2, iseq1, iseq2, expert =False, match_score=4, mismatch_penalty=-1, gap_penalty=-2)
+        alignment(matrix, seq1, seq2, expert =False, match_score=4, mismatch_penalty=-1, gap_penalty=-2)
+        
     elif choice == "expert" :
         #will return matrix (without printing it in the console)
         matrix_cost(seq1, seq2, match_score=4, mismatch_penalty=-1, gap_penalty=-2, debug=False)
         #will make the alignment and write it in an external file (without printing it in the console)
-        alignment(matrix, seq1, seq2, expert=True,  iseq1="", iseq2="", match_score=4, mismatch_penalty=-1, gap_penalty=-2)
+        #if iseq : alignment(matrix, seq1, seq2, iseq1, iseq2, expert=True, match_score=4, mismatch_penalty=-1, gap_penalty=-2)
+        alignment(matrix, seq1, seq2, expert=True, match_score=4, mismatch_penalty=-1, gap_penalty=-2)
     
     #if choice == "normal"
     else :
         #will return matrix (without printing it in the console)
         matrix_cost(seq1, seq2, match_score=4, mismatch_penalty=-1, gap_penalty=-2, debug=False)
         #will make the alignment and print it in the console)
-        alignment(matrix, seq1, seq2, expert=False,  iseq1="", iseq2="", match_score=4, mismatch_penalty=-1, gap_penalty=-2)
+        #if iseq: alignment(matrix, seq1, seq2, iseq1, iseq2, expert=False, match_score=4, mismatch_penalty=-1, gap_penalty=-2)
+        alignment(matrix, seq1, seq2, expert=False, match_score=4, mismatch_penalty=-1, gap_penalty=-2)
 
