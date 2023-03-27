@@ -299,6 +299,7 @@ def alignement (matrix, seq1, seq2, expert =False,  iseq1="", iseq2="", match_sc
         #total number of nt, for seq2
         output += f"{num2_nt}\n"        
     output += f"\n"
+    
     if expert == False:
           print(output) #
     else:
