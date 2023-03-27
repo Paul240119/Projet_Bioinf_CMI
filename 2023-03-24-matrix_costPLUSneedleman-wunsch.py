@@ -108,7 +108,7 @@ def matrix_cost(seq1, seq2, match_score=4, mismatch_penalty=-1, gap_penalty=-2, 
             print("\n",end="")
             print("-"*width)
 
-def alignement (matrix, seq1, seq2, expert = "",  iseq1="", iseq2="", match_score=4, mismatch_penalty=-1, gap_penalty=-2):
+def alignement (matrix, seq1, seq2, expert =False,  iseq1="", iseq2="", match_score=4, mismatch_penalty=-1, gap_penalty=-2):
     
     # Alignment : Trace back through the costs matrix to find it #
     #############################################################
@@ -299,15 +299,12 @@ def alignement (matrix, seq1, seq2, expert = "",  iseq1="", iseq2="", match_scor
         #total number of nt, for seq2
         output += f"{num2_nt}\n"        
     output += f"\n"
-    if expert == "affichage":
-          print(output) #ajout pour test
-    elif expert == "fichier":
-       with open("Alignement.txt", "w") as filout:
-           filout.write(output)
+    if expert == False:
+          print(output) #
     else:
-        print("saississez affichage ou fichier dans la variable expert")
-   
-    return output
+       with open("Alignement.txt", "w") as filout:
+           filout.write(output) #
+    
     
 
 ## Test appel fonction ci-dessous
