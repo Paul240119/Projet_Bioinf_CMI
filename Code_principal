@@ -4,63 +4,63 @@
 #
 # Licence MIT
 #--------------------------------------------------
-######################################################################
-# import tkinter as tk
-#from tkinter import filedialog#
-##
-#def choose_file():
-#    # create a Tkinter root window, but hide it
-#    root = tk.Tk()
-#    root.withdraw()
-#
-#    # prompt the user to select a file and get the file path
-#    file_path = filedialog.askopenfilename()
-#
-#    # read the contents of the selected file
-#    with open(file_path, 'r') as file:
-#        file = file.read()
-#
-#    # return the text content of the file
-#    return file
-##define function verif to parse the input file
-#def separate_seq():
-#    # call choose_file_and_read_text() to get the text content of the selected file
-#    file = choose_file()
-#
-#    # split the text into lines and get the first line
-#    lines = file.split('\n')
-#    first_line = lines[0]
-#
-#    # check if the first line starts with ">"
-#    if first_line.startswith('>'):
-#        print("The first line starts with '>'")
-#        iseq = first_line
-#        seq = '\n'.join(lines[1:])
-#    else:
-#        print("The first line does not start with '>'")
-#        iseq = ''
-#        seq = file
-#
-#    # return the iseq and seq variables
-#    return iseq, seq
-#def verif_seq(seq):
-#    allowed_chars = set(['A', 'T', 'C', 'G'])
-#    seq_length = len(seq)
-#
-#    # check if all characters in seq are in allowed_chars set
-#    if set(seq) <= allowed_chars:
-#        print("Valid DNA sequence")
-#
-#        # check if seq length is less than or equal to 20
-#        if seq_length <= 20:
-#            debug = True
-#            print("Length of seq is less than or equal to 20")
-#        else:
-#            debug = False
-#            print("Length of seq is greater than 20")
-#    else:
-#        debug = False
-#        print("Enter a valid DNA sequence")
-#
-#    return debug
-#####################################################################
+
+
+import tkinter as tk
+from tkinter import filedialog#
+def choose_file():
+    # create a Tkinter root window, but hide it
+    root = tk.Tk()
+    root.withdraw()
+
+    # prompt the user to select a file and get the file path
+    file_path = filedialog.askopenfilename()
+
+    # read the contents of the selected file
+    with open(file_path, 'r') as file:
+        file = file.read()
+
+    # return the text content of the file
+    return file
+define function verif to parse the input file
+def separate_seq():
+    # call choose_file_and_read_text() to get the text content of the selected file
+    file = choose_file()
+
+    # split the text into lines and get the first line
+    lines = file.split('\n')
+    first_line = lines[0]
+
+    # check if the first line starts with ">"
+    if first_line.startswith('>'):
+        print("The first line starts with '>'")
+        iseq = first_line
+        seq = '\n'.join(lines[1:])
+    else:
+        print("The first line does not start with '>'")
+        iseq = ''
+        seq = file
+
+    # return the iseq and seq variables
+    return iseq, seq
+def verif_seq(seq):
+    allowed_chars = set(['A', 'T', 'C', 'G'])
+    seq_length = len(seq)
+
+    # check if all characters in seq are in allowed_chars set
+    if set(seq) <= allowed_chars:
+        print("Valid DNA sequence")
+
+        # check if seq length is less than or equal to 20
+        if seq_length <= 20:
+            debug = True
+            print("Length of seq is less than or equal to 20")
+        else:
+            debug = False
+            print("Length of seq is greater than 20")
+    else:
+        debug = False
+        print("Enter a valid DNA sequence")
+
+    return debug
+
