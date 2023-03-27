@@ -16,8 +16,15 @@ def choose_file():
     # return the text content of the file
     return file
 
-# define function to parse the input file
-def open_seq():
+# define function to parse the 1st input file
+def open_seq1():
+    
+    ## Initialisation of the variables...
+    #...which will be used by other functions (function 2)...
+    #...so we create them as global
+    global seq1
+    global iseq1
+    
     # call choose_file_and_read_text() to get the text content of the selected file
     file = choose_file()
 
@@ -27,19 +34,49 @@ def open_seq():
 
     # check if the first line starts with ">"
     if first_line.startswith('>'):
-        print("The first line starts with '>'")
-        iseq = first_line
-        seq = '\n'.join(lines[1:])
+        print("Information : The first line starts with '>'")
+        iseq1 = first_line
+        seq1 = '\n'.join(lines[1:])
+        print("iseq1:",iseq1)
+        print("seq1:",seq1)
     else:
-        print("The first line does not start with '>'")
-        iseq = ''
-        seq = file
+        print("Information : The first line does not start with '>'")
+        iseq1 = ''
+        seq1 = file
+        print("iseq1:",iseq1)
+        print("seq1:",seq1)
 
-    # return the iseq and seq variables
-    return iseq, seq
+def open_seq2():
+    
+    ## Initialisation of the variables...
+    #...which will be used by other functions (function 2)...
+    #...so we create them as global
+    global seq2
+    global iseq2
+    
+    # call choose_file to get the text content of the selected file
+    file = choose_file()
+
+    # split the text into lines and get the first line
+    lines = file.split('\n')
+    first_line = lines[0]
+
+    # check if the first line starts with ">"
+    if first_line.startswith('>'):
+        print("Information : The first line starts with '>'")
+        iseq2 = first_line
+        seq2 = '\n'.join(lines[1:])
+        print("iseq2:",iseq2)
+        print("seq2:",seq2)
+    else:
+        print("Information : The first line does not start with '>'")
+        iseq2 = ''
+        seq2 = file
+        print("iseq2:",iseq2)
+        print("seq2:",seq2)
 
 def verif_seq(seq):
-    allowed_chars = set(['A', 'T', 'C', 'G'])
+    allowed_chars = set(["A", "T", "C", "G","\n"])
     seq_length = len(seq)
 
     # check if all characters in seq are in allowed_chars set
@@ -54,10 +91,12 @@ def verif_seq(seq):
         else:
             print("Length of seq is greater than 20")
             propose_debug = False
-    else:
-        propose_debug = False
-        print("Give a valid DNA sequence")
 
+    else:
+        print("Warning : Give a valid DNA sequence")
+        propose_debug = False
+        quit()
+        
     return propose_debug
 
 def mode_choice():
@@ -178,8 +217,6 @@ def matrix_cost(seq1, seq2, match_score=4, mismatch_penalty=-1, gap_penalty=-2, 
             
             ## Registration of the highest score (sum of costs) in the cell of the costs matrix 
             matrix[i][j] = max(diagonal_score, left_score, up_score)
-            
-    return matrix
 
     # Optionnal* printing of the costs matrix #
     ##########################################
@@ -225,6 +262,8 @@ def matrix_cost(seq1, seq2, match_score=4, mismatch_penalty=-1, gap_penalty=-2, 
                 print("{:^3d}{:^3s}".format(element,"|"),end="")
             print("\n",end="")
             print("-"*width)
+
+    return matrix
 
 def alignment(matrix, seq1, seq2, expert =False,  iseq1="", iseq2="", match_score=4, mismatch_penalty=-1, gap_penalty=-2):
     
@@ -428,12 +467,14 @@ def alignment(matrix, seq1, seq2, expert =False,  iseq1="", iseq2="", match_scor
 def Needleman() :
     
     #Import the sequences
-    iseq1,seq1 = open_seq()
-    iseq2,seq2 = open_seq()
+    open_seq1()
+    open_seq2()
     
     #verification of the sequences
+    global verif1 #to use it in other functions (mode_choice)
+    global verif2
     verif1=verif_seq(seq1)
-    verif2=verif-seq(seq2)
+    verif2=verif_seq(seq2)
 
     #Mode Choice of the user
     choice = mode_choice() 
