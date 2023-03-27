@@ -5,9 +5,5 @@
 # Licence MIT
 #--------------------------------------------------
 
-## Test appel fonction ci-dessous
-seq1="ATTCAAGCTGA"
-seq2="AACTTGCGTGA"
-matrix_cost(seq1, seq2, match_score=4, mismatch_penalty=-1, gap_penalty=-2,debug=True)
-alignement(matrix, seq1, seq2, expert = "",  iseq1="", iseq2="", match_score=4, mismatch_penalty=-1, gap_penalty=-2)
-
+from ModuleFunction.py import*
+Needleman()
