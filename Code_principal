@@ -5,7 +5,13 @@
 # Licence MIT
 #--------------------------------------------------
 
+#CODE PRINCIPAL #
+
 from Module_Functions import*
 
-Needleman()
+#Import the sequences
+seq1="ATTCAAGCTGA"
+seq2="AACTTGCGTGA"
+
+Needleman(seq1,seq2)
 
