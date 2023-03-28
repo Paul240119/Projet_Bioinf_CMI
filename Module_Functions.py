@@ -461,11 +461,9 @@ def alignment(matrix, seq1, seq2, iseq1="", iseq2="", expert =False, match_score
            filout.write(output) #Creating a file with the alignement 
 
 
-def Needleman() :
+def Needleman(seq1="",seq2="") :
     
     #Import the sequences
-    seq1="ATTCAAGCTGA"
-    seq2="AACTTGCGTGA"
     #open_seq1()
     #open_seq2()
     
@@ -499,4 +497,3 @@ def Needleman() :
         #will make the alignment and print it in the console)
         #if iseq: alignment(matrix, seq1, seq2, iseq1, iseq2, expert=False, match_score=4, mismatch_penalty=-1, gap_penalty=-2)
         alignment(matrix, seq1, seq2, expert=False, match_score=4, mismatch_penalty=-1, gap_penalty=-2)
-
